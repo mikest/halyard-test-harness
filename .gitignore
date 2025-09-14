@@ -1,0 +1,62 @@
+# Godot auto generated files
+*.gen.*
+.godot/
+
+*.blend1
+
+# Ignore library downloads
+halyard*.zip
+addons/halyard
+
+# Ignore some specific import settings files
+*.gdextension.uid
+#*.import
+bin/windows/*.ilk
+~*.dll
+
+.sconsign*.dblite
+
+# Ignore custom.py
+custom.py
+__pycache__
+
+# Ignore generated compile_commands.json
+compile_commands.json
+
+# Ignore files generated for documentation
+/src/gen
+
+# Binaries
+*.o
+*.os
+*.so
+*.obj
+*.bc
+*.pyc
+*.dblite
+*.pdb
+*.lib
+*.config
+*.creator
+*.creator.user
+*.files
+*.includes
+*.idb
+*.exp
+
+# Other stuff
+*.log
+
+# VSCode
+.vscode/*
+!.vscode/extensions.json
+!.vscode/launch.json
+!.vscode/tasks.json
+.DS_Store
+
+# Jetbrains
+.idea/
+
+# Cmake
+cmake-build*
+CMakeUserPresets.json
