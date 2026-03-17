@@ -1,3 +1,6 @@
 [submodule "addons/halyard"]
 	path = addons/halyard
 	url = git@github.com:mikest/halyard.git
+[submodule "halyard"]
+	path = addons/halyard
+	url = git@github.com:mikest/halyard.git
