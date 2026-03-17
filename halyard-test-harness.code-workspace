@@ -1,0 +1,116 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../estee_guidelines"
+		},
+		{
+			"path": "../godot"
+		},
+		{
+			"path": "addons/halyard"
+		},
+		{
+			"path": "addons/halyard/src"
+		}
+	],
+	"settings": {
+		"chat.tools.terminal.autoApprove": {
+			"scons": true,
+			"ForEach-Object": true
+		}
+	},
+	"launch": {
+		"version": "0.2.0",
+		"configurations": [
+			{
+				"name": "Edit Halyard",
+				"type": "cppvsdbg",
+				"request": "launch",
+				"program": "${workspaceFolder:halyard-test-harness}/../godot/bin/godot.windows.editor.dev.x86_64.exe",//"${config:godotTools.editorPath.godot4}",
+				"args": [
+					"--editor",
+					"--path",
+					"${workspaceFolder:halyard-test-harness}"
+				],
+				"stopAtEntry": false,
+				"cwd": "${workspaceFolder:halyard-test-harness}/addons/halyard",
+				"environment": [],
+				"console": "internalConsole",
+				"visualizerFile": "${workspaceFolder:halyard-test-harness}/addons/halyard/platform/windows/godot.natvis",
+				"symbolSearchPath": "${workspaceFolder:halyard-test-harness}/../godot/bin",
+				"preLaunchTask": "Halyard: Build (Debug)"
+			},
+			{
+				"name": "Play Halyard",
+				"type": "cppvsdbg",
+				"request": "launch",
+				"program": "${workspaceFolder:halyard-test-harness}/../godot/bin/godot.windows.editor.dev.x86_64.exe",//"${config:godotTools.editorPath.godot4}",
+				"args": [
+					"--play",
+					"--remote-debug",
+					"tcp://127.0.0.1:6007",
+					"--path",
+					"${workspaceFolder:halyard-test-harness}"
+				],
+				"stopAtEntry": false,
+				"cwd": "${workspaceFolder:halyard-test-harness}/addons/halyard",
+				"environment": [],
+				"console": "internalConsole",
+				"visualizerFile": "${workspaceFolder:halyard-test-harness}/addons/halyard/platform/windows/godot.natvis",
+				"symbolSearchPath": "${workspaceFolder:halyard-test-harness}/../godot/bin",
+				"preLaunchTask": "Halyard: Build (Debug)"
+			}
+		]
+	},
+	"tasks": {
+		"version": "2.0.0",
+		"tasks": [
+			{
+				"label": "Halyard: Build (Debug)",
+				"group": {
+					"kind": "build",
+					"isDefault": true
+				},
+				"type": "shell",
+				"command": "scons",
+				"args": [
+					"template_debug=yes",
+					"dev_build=yes"
+				],
+				"options": {
+					"cwd": "${workspaceFolder:halyard-test-harness}/addons/halyard"
+				},
+				"problemMatcher": "$msCompile"
+			},
+			{
+				"label": "Halyard: Build (Release)",
+				"group": "build",
+				"type": "shell",
+				"command": "scons",
+				"args": [
+					"dev_build=no"
+				],
+				"options": {
+					"cwd": "${workspaceFolder:halyard-test-harness}/addons/halyard"
+				},
+				"problemMatcher": "$msCompile"
+			},
+			{
+				"label": "Halyard: Clean",
+				"group": "build",
+				"type": "shell",
+				"command": "scons",
+				"args": [
+					"--clean"
+				],
+				"options": {
+					"cwd": "${workspaceFolder:halyard-test-harness}/addons/halyard"
+				},
+				"problemMatcher": []
+			}
+		]
+	}
+}

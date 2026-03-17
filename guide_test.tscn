@@ -1,0 +1,142 @@
+[gd_scene format=3 uid="uid://bgyal7t5w7ffi"]
+
+[ext_resource type="PackedScene" uid="uid://cn1vm8lpn0kby" path="res://addons/halyard/tests/base.tscn" id="1_qpfap"]
+[ext_resource type="Script" uid="uid://bpo84j3idh1wu" path="res://addons/halyard/tests/draggable.gd" id="2_8d08c"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_8d08c"]
+radius = 0.1
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_nsujm"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_s5jln"]
+
+[sub_resource type="BuoyancyMaterial" id="BuoyancyMaterial_wqyti"]
+
+[sub_resource type="TorusMesh" id="TorusMesh_75t42"]
+inner_radius = 0.125
+outer_radius = 0.25
+rings = 24
+ring_segments = 12
+
+[node name="Node3D" type="Node3D" unique_id=891146440]
+
+[node name="TestBase" parent="." unique_id=2029226043 instance=ExtResource("1_qpfap")]
+
+[node name="GroundAnchor" type="RopeAnchor" parent="." unique_id=1005489107]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+
+[node name="GroundAnchor2" type="RopeAnchor" parent="." unique_id=608625436]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
+
+[node name="AirAnchor" type="RopeAnchor" parent="." unique_id=848758835]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 20, 0)
+
+[node name="AirAnchor2" type="RopeAnchor" parent="." unique_id=631084700]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 20, 0)
+
+[node name="SlideA" type="RigidBody3D" parent="." unique_id=1398950986]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 19, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SlideA" unique_id=256511946]
+shape = SubResource("SphereShape3D_8d08c")
+
+[node name="SlideAnchor" type="RopeAnchor" parent="SlideA" unique_id=1066573193]
+behavior = 3
+
+[node name="SlideB" type="RigidBody3D" parent="." unique_id=2022801752]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 19, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SlideB" unique_id=273550068]
+shape = SubResource("SphereShape3D_8d08c")
+
+[node name="SlideAnchor2" type="RopeAnchor" parent="SlideB" unique_id=1788229182]
+behavior = 3
+
+[node name="Rope" type="Rope" parent="." unique_id=1725298933]
+rope_length = 10.0
+anchor_count = 3
+stiffness_iterations = 30
+stiffness = 1.9
+tension_force_scale = 3.0
+collision_layer = 0
+collision_mask = 0
+apply_wind = true
+anchors/0/offset = 0.0
+anchors/0/from = 0
+anchors/0/node_path = NodePath("../AirAnchor")
+anchors/1/offset = 1.0
+anchors/1/from = 0
+anchors/1/node_path = NodePath("../SlideA/SlideAnchor")
+anchors/2/offset = 0.0
+anchors/2/from = 1
+anchors/2/node_path = NodePath("../GroundAnchor")
+custom_aabb = AABB(-0.0625, -0.097118706, -0.0625, 2.125, 20.159618, 0.125)
+
+[node name="Rope2" type="Rope" parent="." unique_id=778567170]
+rope_length = 10.0
+anchor_count = 3
+stiffness_iterations = 30
+stiffness = 1.9
+tension_force_scale = 3.0
+max_tension_force = 10000.0
+collision_layer = 0
+collision_mask = 0
+apply_wind = true
+anchors/0/offset = 0.0
+anchors/0/from = 0
+anchors/0/node_path = NodePath("../AirAnchor2")
+anchors/1/offset = 1.0
+anchors/1/from = 0
+anchors/1/node_path = NodePath("../SlideB/SlideAnchor2")
+anchors/2/offset = 0.0
+anchors/2/from = 1
+anchors/2/node_path = NodePath("../GroundAnchor2")
+custom_aabb = AABB(-2.0625, -0.097118706, -0.0625, 2.125, 20.159618, 0.125)
+
+[node name="Rope3" type="Rope" parent="." unique_id=1412161781]
+particles_per_meter = 4.0
+anchor_distribution = 2
+anchor_count = 3
+stiffness_iterations = 30
+stiffness = 1.5
+tension_force_scale = 2.0
+max_tension_force = 10000.0
+collision_layer = 0
+collision_mask = 0
+anchors/0/node_path = NodePath("../SlideA")
+anchors/0/behavior = 1
+anchors/1/node_path = NodePath("../Ball/SlidingRopeAnchor")
+anchors/2/node_path = NodePath("../SlideB")
+anchors/2/behavior = 1
+custom_aabb = AABB(-2.0625, -0.0625, -1.0625, 4.1249995, 19.125, 1.125)
+
+[node name="Ball" type="RigidBody3D" parent="." unique_id=635322898]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 17, -1)
+collision_layer = 2
+collision_mask = 3
+mass = 15.0
+linear_damp = 0.1
+angular_damp = 1.0
+script = ExtResource("2_8d08c")
+drag_damping = 2.0
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ball" unique_id=968764722]
+shape = SubResource("SphereShape3D_nsujm")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ball" unique_id=1163198508]
+mesh = SubResource("SphereMesh_s5jln")
+
+[node name="RigidBuoyancy" type="RigidBuoyancy" parent="Ball" unique_id=540752153 node_paths=PackedStringArray("collider")]
+collider = NodePath("../CollisionShape3D")
+buoyancy_material = SubResource("BuoyancyMaterial_wqyti")
+show_debug = true
+
+[node name="SlidingRopeAnchor" type="RopeAnchor" parent="Ball" unique_id=1480710135]
+behavior = 3
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0.625, 0)
+
+[node name="SlidingRing" type="MeshInstance3D" parent="Ball" unique_id=1973287279]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0.625, 0)
+mesh = SubResource("TorusMesh_75t42")
+skeleton = NodePath("../../Rope2")

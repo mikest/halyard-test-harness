@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://mx18hto0s1sg"]
+
+[node name="Node3D" type="Node3D" unique_id=1734720197]
+
+[node name="StretchedRope" type="Rope" parent="." unique_id=1349590196]
+rope_length = 1.0
+anchor_count = 5
+stiffness = 0.1
+collision_layer = 0
+collision_mask = 0
+anchors/0/offset = 0.0
+anchors/0/from = 0
+anchors/0/node_path = NodePath(".")
+anchors/1/offset = 0.25
+anchors/1/from = 0
+anchors/1/node_path = NodePath("Anchor1")
+anchors/2/offset = 0.5
+anchors/2/from = 0
+anchors/2/node_path = NodePath("Anchor2")
+anchors/3/offset = 0.75
+anchors/3/from = 0
+anchors/3/node_path = NodePath("Anchor3")
+anchors/4/offset = 1.0
+anchors/4/from = 0
+anchors/4/node_path = NodePath("EndAnchor")
+custom_aabb = AABB(-0.0625, -0.0625, -0.0625, 2.125, 0.125, 0.125)
+
+[node name="Anchor1" type="RopeAnchor" parent="StretchedRope" unique_id=1381602557]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0)
+
+[node name="Anchor2" type="RopeAnchor" parent="StretchedRope" unique_id=1132463914]
+behavior = 1
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+
+[node name="Anchor3" type="RopeAnchor" parent="StretchedRope" unique_id=398776786]
+behavior = 2
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, 0)
+
+[node name="EndAnchor" type="RopeAnchor" parent="StretchedRope" unique_id=1351712624]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)

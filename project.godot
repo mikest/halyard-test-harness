@@ -8,16 +8,47 @@
 
 config_version=5
 
+[animation]
+
+compatibility/default_parent_skeleton_in_mesh_instance_3d=true
+
 [application]
 
 config/name="halyard-test-harness"
-config/features=PackedStringArray("4.3", "Forward Plus")
-config/icon="res://icon.svg"
+run/main_scene="uid://bgyal7t5w7ffi"
+config/features=PackedStringArray("4.6", "Forward Plus")
+
+[debug_draw_3d]
+
+settings/addon_root_folder="res://addons/debug_draw_3d"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/gut/plugin.cfg", "res://addons/halyard/plugin.cfg")
+enabled=PackedStringArray("res://addons/halyard/plugin.cfg")
 
 [gdunit4]
 
 ui/inspector/tree_view_mode=1
+
+[physics]
+
+3d/physics_engine="Jolt Physics"
+
+[shader_globals]
+
+DetailViewportTexture={
+"type": "sampler2D",
+"value": ""
+}
+DetailViewportTextureSize={
+"type": "float",
+"value": 0.0
+}
+DetailViewportTextureCornerPosition={
+"type": "vec3",
+"value": Vector3(0, 0, 0)
+}
+DetailViewportVertexSpacing={
+"type": "float",
+"value": 1.0
+}
