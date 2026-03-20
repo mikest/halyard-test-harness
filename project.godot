@@ -15,7 +15,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 [application]
 
 config/name="halyard-test-harness"
-run/main_scene="uid://bgyal7t5w7ffi"
+run/main_scene="uid://ddppwbtkh0t2f"
 config/features=PackedStringArray("4.6", "Forward Plus")
 
 [debug_draw_3d]

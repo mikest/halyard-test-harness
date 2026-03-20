@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://d31d3riy2bo85"]
+
+[ext_resource type="PackedScene" uid="uid://cn1vm8lpn0kby" path="res://addons/halyard/tests/base.tscn" id="1_1s68p"]
+
+[sub_resource type="RopeAppearance" id="RopeAppearance_1s68p"]
+rope_lod = 4
+
+[node name="Node3D" type="Node3D" unique_id=806418464]
+
+[node name="TestBase" parent="." unique_id=2029226043 instance=ExtResource("1_1s68p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, 0)
+
+[node name="Rope" type="Rope" parent="." unique_id=1631320417]
+rope_length = 15.0
+rope_width = 0.1
+particles_per_meter = 4.0
+appearance = SubResource("RopeAppearance_1s68p")
+anchor_count = 3
+anchors/0/offset = 0.0
+anchors/0/from = 0
+anchors/0/node_path = NodePath("../StartAnchor")
+anchors/1/offset = 1.0
+anchors/1/from = 0
+anchors/1/node_path = NodePath("../CoiledAnchor")
+anchors/2/offset = 0.0
+anchors/2/from = 1
+anchors/2/node_path = NodePath("../EndAnchor")
+custom_aabb = AABB(-0.05, -0.70777726, -0.27102363, 4.1, 1.2413368, 0.60948354)
+
+[node name="StartAnchor" type="RopeAnchor" parent="." unique_id=42101136]
+
+[node name="CoiledAnchor" type="CoiledAnchor" parent="." unique_id=1630304516]
+rope_width = 0.11
+particles_per_meter = 4.2
+coiled_length = 10.71
+radius = 0.2
+turns_per_layer = 8.4
+transform = Transform3D(-0.6502175, 0, 0.75974834, 0.7297072, -0.27842122, 0.62450725, 0.21153006, 0.96045905, 0.18103434, 0.4541788, 0.3544736, 0.09441805)
+
+[node name="EndAnchor" type="RopeAnchor" parent="." unique_id=2099638262]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
