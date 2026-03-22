@@ -15,27 +15,32 @@ rope_length = 15.0
 rope_width = 0.1
 particles_per_meter = 4.0
 appearance = SubResource("RopeAppearance_1s68p")
-anchor_count = 3
-anchors/0/offset = 0.0
-anchors/0/from = 0
+anchor_distribution = 2
+anchor_count = 4
 anchors/0/node_path = NodePath("../StartAnchor")
-anchors/1/offset = 1.0
-anchors/1/from = 0
 anchors/1/node_path = NodePath("../CoiledAnchor")
-anchors/2/offset = 0.0
-anchors/2/from = 1
-anchors/2/node_path = NodePath("../EndAnchor")
-custom_aabb = AABB(-0.05, -0.70777726, -0.27102363, 4.1, 1.2413368, 0.60948354)
+anchors/2/node_path = NodePath("../CoiledAnchor2")
+anchors/3/node_path = NodePath("../EndAnchor")
+custom_aabb = AABB(-0.11002417, -2.2384467, -0.05, 0.24234164, 2.7984452, 4.1)
 
 [node name="StartAnchor" type="RopeAnchor" parent="." unique_id=42101136]
 
 [node name="CoiledAnchor" type="CoiledAnchor" parent="." unique_id=1630304516]
+coiled_length = 3.33
+radius = 0.5
+turns_per_layer = 8.4
 rope_width = 0.11
 particles_per_meter = 4.2
-coiled_length = 10.71
-radius = 0.2
+transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 0, 0, 1)
+
+[node name="CoiledAnchor2" type="CoiledAnchor" parent="." unique_id=1793533718]
+coiled_length = 1.9
+radius = 0.5
 turns_per_layer = 8.4
-transform = Transform3D(-0.6502175, 0, 0.75974834, 0.7297072, -0.27842122, 0.62450725, 0.21153006, 0.96045905, 0.18103434, 0.4541788, 0.3544736, 0.09441805)
+rope_width = 0.11
+particles_per_meter = 4.2
+clockwise = true
+transform = Transform3D(-1.0000001, 0, -8.74228e-08, 0, 1, 0, 8.7422784e-08, 0, -1.0000002, 0, 0, 2)
 
 [node name="EndAnchor" type="RopeAnchor" parent="." unique_id=2099638262]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
