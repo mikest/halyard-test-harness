@@ -21,7 +21,7 @@ anchors/0/node_path = NodePath("../StartAnchor")
 anchors/1/node_path = NodePath("../CoiledAnchor")
 anchors/2/node_path = NodePath("../CoiledAnchor2")
 anchors/3/node_path = NodePath("../EndAnchor")
-custom_aabb = AABB(-0.11002417, -2.2384467, -0.05, 0.24234164, 2.7984452, 4.1)
+custom_aabb = AABB(-0.11002417, -2.2604728, -0.05, 0.19016919, 2.820452, 4.1)
 
 [node name="StartAnchor" type="RopeAnchor" parent="." unique_id=42101136]
 
